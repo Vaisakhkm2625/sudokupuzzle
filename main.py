@@ -47,9 +47,32 @@ def isPossible(x,y,n):
     return True
             
 
+print("Question")
+print()
 printMat()
+
+
+print("Answers")
+print()
 # print(isPossible(0,1,7))
 
 # for i in range(1,10):
     # print(i,':',isPossible(3,0,i))
 
+def checkeachcells():
+    global mat;
+    for x in range(9):
+        for y in range(9):
+            # print(x,':',y, ' ')
+            if mat[x][y] == 0:
+                for n in range(1,10):
+                    # print(isPossible(x,y,n))
+                    if isPossible(x,y,n):
+                        mat[x][y] = n;
+                        checkeachcells()
+                        mat[x][y] = 0;
+                return
+    printMat()
+
+checkeachcells()
+# printMat()
